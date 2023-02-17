@@ -2,6 +2,7 @@
     /* height: 500px;
     width: 500px; */
     background-color: green;
-    /* background-image: url("Images/bg.jpg"); */
+    border: 10px solid blue;
+    background-image: url("Images/bg.jpg");
 
 }

@@ -3,7 +3,7 @@
 function init(){
     let canvas=document.getElementById("mycanvas");
 
-    W = H = canvas.width =1000 ,canvas.height = 1000;
+    W = H = canvas.width =600 ,canvas.height = 600;
     pen=canvas.getContext('2d');
     cs=50 // cell size
 
