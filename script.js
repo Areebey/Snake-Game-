@@ -27,20 +27,47 @@ function init(){
         },
 
         updateSnake:function(){
+            console.log("Updateing Snake")
+
             this.cells.pop();
             let headX=this.cells[0].x;
             let headY=this.cells[0].y;
-        
-            let X=headX + 1;
-            let Y=headY;
-            this.cells.unshift({x:X,y:Y});
-            console.log("Updateing Snake")
+            let nextX, nextY;
+
+            if(this.direction=="right"){
+                nextX=headX+1;
+                nextY=headY;
+            }else if(this .direction=="left"){
+                nextX=headX-1;
+                nextY=headY
+            }else if(this.direction=="down"){
+                nextX=headX;
+                nextY=headY+1;
+            }else{
+                nextX=headX;
+                nextY=headY-1;
+            }
+
+            this.cells.unshift({x:nextX,y:nextY });
         }
     };
 
-
-
     snake.createSnake();
+
+    // Add event listener for keyboard access
+    function keyPressd(e){
+        if(e.key=="ArrowRight"){
+            snake.direction="right"
+        }else if(e.key=="ArrowLeft"){
+            snake.direction="left"
+        }else if(e.key=="ArrowDown"){
+            snake.direction="down"
+        }else{
+            snake.direction="up"
+        }
+        console.log(snake.direction)
+    }
+    document.addEventListener("keydown",keyPressd)
 };
 
 function draw(){
@@ -50,7 +77,6 @@ function draw(){
 
 function update(){
     snake.updateSnake();
-
 };
 
 function gameLoop(){
@@ -59,4 +85,5 @@ function gameLoop(){
 };
 
 init();
+
 let f = setInterval(gameLoop(),100);
