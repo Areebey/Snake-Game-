@@ -1,8 +1,7 @@
-// A simple Snake Game 
+// A simple Snake Game Code 
 
 function init(){
     let canvas=document.getElementById("mycanvas");
-
     W = H = canvas.width =600 ,canvas.height = 600;
     pen=canvas.getContext('2d');
     cs=50 // cell size
@@ -12,7 +11,10 @@ function init(){
 food_img=new Image();
 food_img.src="images/apple.png"
 
-    food = getRandomFood();
+trophy=new Image();
+trophy.src="images/trophy.png"
+
+   food = getRandomFood();
 
     snake={
         init_len:5,
@@ -34,7 +36,6 @@ food_img.src="images/apple.png"
                 pen.fillRect(food.x,food.y,cs,cs);
             }
         },
-
         updateSnake:function(){
             console.log("Updateing Snake")
 
@@ -52,7 +53,6 @@ food_img.src="images/apple.png"
             this.cells.pop();
 
             let nextX, nextY;
-
             if(this.direction=="right"){
                 nextX=headX+1;
                 nextY=headY;
@@ -69,9 +69,8 @@ food_img.src="images/apple.png"
 
             this.cells.unshift({x:nextX,y:nextY });
 
-            let last_x=Math.round(W/cs)
-            let last_y=Math.round(H/cs)
-
+            let last_x=Math.round(W/cs);
+            let last_y=Math.round(H/cs);
            if(this.cells[0].y<0 ||this.cells[0].x<0  ||this.cells[0].x>last_x || this.cells[0].y>last_y)
              game_Over=true;
         }
@@ -102,12 +101,11 @@ function draw(){
     pen.fillStyle=food.color;
     pen.drawImage(food_img,food.x*cs,food.y*cs,cs,cs);
 
-
+    pen.drawImage(trophy,18,20,cs,cs)
     pen.fillStyle="blue";
-    pen.font="20px  Roboto"
-    pen.fillText(score,50,50)
+    pen.font="50px  Roboto";
+    pen.fillText(score,50,50);
 };
-
 function update(){
     snake.updateSnake();
 };
@@ -131,7 +129,6 @@ if(game_Over==true){
     alert("Gome Over");
     return
 }
-
     draw();
     update();
 };
