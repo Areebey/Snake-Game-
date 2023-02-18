@@ -22,7 +22,7 @@ function init(){
         drawSnake:function(){
             for(let i=0;i< this.cells.length;i++){
                 pen.fillStyle=this.color;
-                pen.fillRect(this.cells[i].x*cs,this.cells[i].y*cs,cs,cs);
+                pen.fillRect(this.cells[i].x*cs,this.cells[i].y*cs,cs=3,cs=3);
             }
         },
 
