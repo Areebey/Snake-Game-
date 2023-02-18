@@ -6,6 +6,9 @@ function init(){
     W = H = canvas.width =600 ,canvas.height = 600;
     pen=canvas.getContext('2d');
     cs=50 // cell size
+    game_Over=false;
+
+    
     food = getRandomFood();
 
     snake={
@@ -38,6 +41,9 @@ function init(){
                 console.log("Food eat");
                 food= getRandomFood();
             }
+            else{
+                this.cells.pop();
+            }
 
             this.cells.pop();
 
@@ -58,8 +64,14 @@ function init(){
             }
 
             this.cells.unshift({x:nextX,y:nextY });
+
+            let last_x=Math.round(W/cs)
+            let last_y=Math.round(H/cs)
+
+           if(this.cells[0].y<0 ||this.cells[0].x<0  ||this.cells[0].x>last_x || this.cells[0].y>last_y)
+             game_Over=true;
         }
-    };
+        };
 
     snake.createSnake();
 
