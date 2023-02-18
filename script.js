@@ -7,7 +7,10 @@ function init(){
     pen=canvas.getContext('2d');
     cs=50 // cell size
     game_Over=false;
+    score=5;
 
+food_img=new Image();
+food_img.src="images/apple.png"
 
     food = getRandomFood();
 
@@ -40,6 +43,7 @@ function init(){
             if(headX==food.x && headY==food.y){
                 console.log("Food eat");
                 food= getRandomFood();
+                score ++;
             }
             else{
                 this.cells.pop();
@@ -92,8 +96,16 @@ function init(){
 };
 
 function draw(){
-    pen.clearRect(0,0,W,H)
-    snake.drawSnake()
+    pen.clearRect(0,0,W,H);
+    snake.drawSnake();
+
+    pen.fillStyle=food.color;
+    pen.drawImage(food_img,food.x*cs,food.y*cs,cs,cs);
+
+
+    pen.fillStyle="blue";
+    pen.font="20px  Roboto"
+    pen.fillText(score,50,50)
 };
 
 function update(){
