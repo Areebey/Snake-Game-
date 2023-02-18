@@ -103,7 +103,7 @@ function draw(){
 
     pen.drawImage(trophy,18,20,cs,cs)
     pen.fillStyle="blue";
-    pen.font="50px  Roboto";
+    pen.font="30px  Roboto";
     pen.fillText(score,50,50);
 };
 function update(){
