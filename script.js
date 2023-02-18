@@ -8,7 +8,7 @@ function init(){
     cs=50 // cell size
     game_Over=false;
 
-    
+
     food = getRandomFood();
 
     snake={
@@ -114,6 +114,11 @@ function getRandomFood(){
 }
 
 function gameLoop(){
+if(game_Over==true){
+    clearInterval(f);
+    alert("Gome Over")
+}
+
     draw();
     update();
 };
