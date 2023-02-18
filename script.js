@@ -37,7 +37,7 @@ function init(){
 
             let headX=this.cells[0].x;
             let headY=this.cells[0].y;
-            if(heasX==food.x && headY==food.y){
+            if(headX==food.x && headY==food.y){
                 console.log("Food eat");
                 food= getRandomFood();
             }
@@ -102,8 +102,8 @@ function update(){
 
 function getRandomFood(){
 
-    let foodX=(Math.random()*(W-cs)/cs);
-    let foodY=(Math.random()*(H-cs)/cs);
+    let foodX=Math.round(Math.random()*(W-cs)/cs);
+    let foodY=Math.round(Math.random()*(H-cs)/cs);
 
     let food={
         x:foodX,
@@ -116,7 +116,8 @@ function getRandomFood(){
 function gameLoop(){
 if(game_Over==true){
     clearInterval(f);
-    alert("Gome Over")
+    alert("Gome Over");
+    return
 }
 
     draw();
